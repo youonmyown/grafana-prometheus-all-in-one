@@ -75,8 +75,8 @@ services:
   graphite:
     image: graphiteapp/graphite-statsd:latest
     ports:
-    - 8081:80
-    - 8090:8080
+    - 8081:80        #Web interface port
+    - 8090:8080      #Port for grafana 
     - 2003:2003
     - 8126:8125
     volumes:
