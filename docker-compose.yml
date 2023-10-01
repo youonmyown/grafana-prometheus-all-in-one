@@ -72,24 +72,33 @@ services:
     depends_on:
       - prometheus
 
-  graphite:
-    image: graphiteapp/graphite-statsd:latest
-    ports:
-    - 8088:80        #Web interface port
-    - 8090:8080      #Port for grafana 
-    - 2003:2003
-    - 8126:8125
-    volumes:
-    - ./storage:/opt/graphite/storage
-    environment:
-    - COLLECTD=1
-    - GRAPHITE_DEBUG=1
-    - REDIS_TAGDB=1
-    - BRUBECK=1
-#    - GOCARBON=1
-#    depends_on:
-#      - db
+#  graphite:
+#    image: graphiteapp/graphite-statsd:latest
+#    ports:
+#    - 8088:80        #Web interface port
+#    - 8090:8080      #Port for grafana
+#    - 2003:2003
+#    - 8126:8125
+#    volumes:
+#    - ./storage:/opt/graphite/storage
+#    environment:
+#    - COLLECTD=1
+#    - GRAPHITE_DEBUG=1
+#    - REDIS_TAGDB=1
+#    - BRUBECK=1
 
+# InfluxDB for TrueNAS monitoring
+  influxdb:
+    image: influxdb:1.8
+    ports:
+      - 8086:8086
+      - 2003:2003
+    environment:
+      - INFLUXDB_GRAPHITE_ENABLED=true
+    volumes:
+#      - ./influx:/var/lib/influxdb2
+      - ./influxdb.conf:/etc/influxdb/influxdb.conf
+    command: -config /etc/influxdb/influxdb.conf
 
   grafana:
     image: grafana/grafana
