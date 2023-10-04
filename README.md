@@ -27,6 +27,8 @@ Enter into the console to get a list of running containers:
 docker ps
 ```
 You will receive something similar, we need the container ID:
+![image](https://github.com/youonmyown/grafana-prometheus-all-in-one/assets/138362837/8e805bce-94ba-41bf-a12e-34047195f6b8)
+
 
 After that enter:
 ```
