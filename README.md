@@ -20,7 +20,7 @@ After you have edited the files, return to the previous directory and run docker
 cd ..
 docker compose up -d
 ```
-## TrueNAS Core monitoring
+## TrueNAS Core\Scale monitoring
 For monitoring the TruNAS server, an InfluxDB (with Graphite protocol)  service is prepared in the docker-compose file.
 Enter into the console to get a list of running containers:
 ```
